@@ -2,7 +2,8 @@ Ext.define("AM.controller.Authentication", {
 	extend : "Ext.app.Controller",
 	views : [
 		"AuthenticationForm",
-		'Viewport'
+		'Viewport',
+		"ProtectedContent"
 	],
 	
 	currentUser : {
@@ -22,6 +23,10 @@ Ext.define("AM.controller.Authentication", {
 		this.control({
 			"button#loginBtn" : {
 				click : this.onLoginClick
+			},
+			
+			"button#logoutBtn": {
+				click : this.onLogoutClick
 			}
 			
 		});
@@ -47,6 +52,13 @@ Ext.define("AM.controller.Authentication", {
 			}
 		}, fieldset); 
 	
+	},
+	
+	onLogoutClick: function( button ){
+		var me = this;
+		me.currentUser['auth_token'] = null; 
+		// this could go to the localStorage. much more awesome 
+		me.showLoginForm()
 	},
 	
 	authenticateUser : function( data , fieldset ){
@@ -75,5 +87,9 @@ Ext.define("AM.controller.Authentication", {
 	showProtectedArea : function(){
 		var me = this; 
 		me.getViewport().getLayout().setActiveItem( 1) ;
+	},
+	showLoginForm : function(){
+		var me = this;
+		me.getViewport().getLayout().setActiveItem( 0 ) ;
 	}
 });

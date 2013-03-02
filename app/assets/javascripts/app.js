@@ -8,23 +8,13 @@ Ext.Loader.setConfig({enabled:true});
 
 // create a new instance of Application class
 Ext.application({
-  // the global namespace
   name: 'AM',
 
   appFolder: '/assets/app',
 
-	// strange, when we don't have the controller, it is an error.
   controllers: [
 			'Authentication' 
 		],
-	
-	// models: [
-	// 	'CurrentUser'
-	// ],
-	// 
-	// stores: [
-	// 	'CurrentUser'
-	// ],
 
   autoCreateViewport: true,
 });
