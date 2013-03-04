@@ -31,4 +31,10 @@ Ext.onReady(function(){
 	    }
 	  }, this);
 	
+	
+	var currentUser = localStorage.getItem("currentUser");
+	console.log("The currentUser: " + currentUser );
+	
+	var newCurrentUser = +localStorage.getItem("newCurrentUser");
+	console.log("The newCurrentUser: " + newCurrentUser );
 });
